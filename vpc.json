@@ -22,14 +22,31 @@
     },
     "Resources": {
         
-        "augvpc": {
+        "AVPC": {
           "Type": "AWS::EC2::VPC",
           "Properties": {
             "CidrBlock": { "Ref": "vpccidr" },
-            "EnableDnsHostnames" : "true"
+            "EnableDnsHostnames" : "true",
+            "Tags": [{"Key" : "Name", "Value" : "AVPC"}]
             
           }
+        },
+
+        
+        "AIGW": {
+          "Type": "AWS::EC2::InternetGateway",
+          "Properties": {
+            "Tags": [{"Key" : "Name", "Value" : "AIGW"}]
+          }
+        },
+        "AttachGateway": {
+          "Type": "AWS::EC2::VPCGatewayAttachment",
+          "Properties": {
+            "VpcId": { "Ref": "AVPC" },
+            "InternetGatewayId": { "Ref": "AIGW" }
+          }
         }
+        
         
 
     },
