@@ -1,0 +1,39 @@
+{
+"AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "",
+    "Metadata": {
+
+    },
+    "Parameters": {
+        
+        "vpccidr": {
+            "Description": "-",
+            "Type": "String",
+            "Default": "10.0.0.0/24"
+        }
+        
+    
+    },
+    "Mappings": {
+
+    },
+    "Conditions": {
+
+    },
+    "Resources": {
+        
+        "augvpc": {
+          "Type": "AWS::EC2::VPC",
+          "Properties": {
+            "CidrBlock": { "Ref": "vpccidr" },
+            "EnableDnsHostnames" : "true"
+            
+          }
+        }
+        
+
+    },
+    "Outputs": {
+
+    }
+}
