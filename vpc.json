@@ -10,7 +10,30 @@
             "Description": "-",
             "Type": "String",
             "Default": "10.0.0.0/24"
-        }
+        },
+        
+        "SN1CIDR": {
+            "Description": "CHOOSE THE CIDR FOR SN1",
+            "Type": "String",
+            "Default": "10.0.0.0/28"
+        },
+        
+        "SN1AZ": {
+            "Description": "CHOOSE THE AZ FOR SN1",
+            "Type": "<AWS::EC2::AvailabilityZone::Name>"
+                 },
+
+        "SN2CIDR": {
+            "Description": "CHOOSE THE CIDR FOR SN2",
+            "Type": "String",
+            "Default": "10.0.0.16/28"
+        },
+        
+        "SN2AZ": {
+            "Description": "CHOOSE THE AZ FOR SN1",
+            "Type": "<AWS::EC2::AvailabilityZone::Name>"
+                 }
+        
         
     
     },
@@ -45,7 +68,27 @@
             "VpcId": { "Ref": "AVPC" },
             "InternetGatewayId": { "Ref": "AIGW" }
           }
+        },
+        "ASN1": {
+          "Type": "AWS::EC2::Subnet",
+          "Properties": {
+            "AvailabilityZone": { "Ref": "SN1AZ" },
+            "VpcId": { "Ref": "AVPC" },
+            "CidrBlock": { "Ref": "SN1CIDR" },
+            "Tags": [{"Key" : "Name", "Value" : "ASN1"}]
+          }
+        },
+        "ASN2": {
+          "Type": "AWS::EC2::Subnet",
+          "Properties": {
+            "AvailabilityZone": { "Ref": "SN2AZ" },
+            "VpcId": { "Ref": "AVPC" },
+            "CidrBlock": { "Ref": "SN2CIDR" },
+            "Tags": [{"Key" : "Name", "Value" : "ASN2"}]
+            
+          }
         }
+        
         
         
 
