@@ -36,7 +36,7 @@
         
         "AAMI": {
             "Description": "CHOOSE THE AMI ",
-            "Type": "List<AWS::EC2::Image::Id>"
+            "Type": "AWS::EC2::Image::Id"
         },
         
         "AEC2": {
