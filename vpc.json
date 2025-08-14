@@ -20,7 +20,7 @@
         
         "SN1AZ": {
             "Description": "CHOOSE THE AZ FOR SN1",
-            "Type": "<AWS::EC2::AvailabilityZone::Name>"
+            "Type": "AWS::EC2::AvailabilityZone::Name"
                  },
 
         "SN2CIDR": {
@@ -31,7 +31,7 @@
         
         "SN2AZ": {
             "Description": "CHOOSE THE AZ FOR SN1",
-            "Type": "<AWS::EC2::AvailabilityZone::Name>"
+            "Type": "AWS::EC2::AvailabilityZone::Name"
                  }
         
         
