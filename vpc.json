@@ -73,6 +73,7 @@
           "Type": "AWS::EC2::Subnet",
           "Properties": {
             "AvailabilityZone": { "Ref": "SN1AZ" },
+            "MapPublicIpOnLaunch": "true",
             "VpcId": { "Ref": "AVPC" },
             "CidrBlock": { "Ref": "SN1CIDR" },
             "Tags": [{"Key" : "Name", "Value" : "ASN1"}]
@@ -87,7 +88,36 @@
             "Tags": [{"Key" : "Name", "Value" : "ASN2"}]
             
           }
+        },
+        
+        "AUGRT": {
+          "Type": "AWS::EC2::RouteTable",
+          "Properties": {
+            "VpcId": { "Ref": "AVPC" },
+            "Tags": [{"Key" : "Name", "Value" : "AUGRT"}]
+          }
+        },
+        
+        "routeName": {
+          "Type": "AWS::EC2::Route",
+          "Properties": {
+            "RouteTableId": { "Ref": "AUGRT" },
+            "DestinationCidrBlock": "0.0.0.0/0",
+            "GatewayId": { "Ref": "AIGW" }
+          }
+        },
+        
+        "routeTableAssocName": {
+          "Type": "AWS::EC2::SubnetRouteTableAssociation",
+          "Properties": {
+            "SubnetId": { "Ref": "ASN1" },
+            "RouteTableId": { "Ref": "AUGRT" }
+          }
         }
+        
+        
+          
+        
         
         
         
